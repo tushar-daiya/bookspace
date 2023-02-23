@@ -35,7 +35,7 @@ const Signup = () => {
           uploadData();
           useAppstate.setLogin(true);
           userDetails.setUser(user);
-          
+          setLoading(false);
           swal({
             text: "User created Redirecting to home page",
             icon: "success",
@@ -49,6 +49,7 @@ const Signup = () => {
           // ...
         })
         .catch((error) => {
+          setLoading(false);
           swal({
             title: error.message,
             icon: "error",
@@ -58,7 +59,7 @@ const Signup = () => {
           // ..
         });
 
-      setLoading(false);
+      
     } catch (error) {
       swal({
         text: error.message,

@@ -17,6 +17,8 @@ const AddBook = () => {
 const [loading, setLoading]=useState(false);
 const addbook= async(event)=>{
   event.preventDefault();
+  if(form.description.split(" ").length>100){
+    document.getElementById("alert_description").classList.add("hidden");
   setLoading(true);
   await addDoc(booksRef,form);
   swal({
@@ -29,9 +31,14 @@ const addbook= async(event)=>{
     title: "",
     author: "",
     description: "",
-    img: ""
+    img: "",
+    rating:0,
+    userRated:0
   })
-  setLoading(false);
+  setLoading(false);}
+  else{
+    document.getElementById("alert_description").classList.remove("hidden");
+  }
 }
   return (
     <div className="flex items-center justify-center p-12">
@@ -109,6 +116,7 @@ const addbook= async(event)=>{
               required
               className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             ></textarea>
+          <p id="alert_description" className="hidden text-red-600 italic text-sm ">Description should be more than 100 words</p>
           </div>
           <div>
             <button type="submit" className=" hover:shadow-form rounded-md bg-[#2563EB] py-3 px-8 text-base font-semibold text-white outline-none">

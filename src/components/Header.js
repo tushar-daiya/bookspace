@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState , useRef ,useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
@@ -15,6 +15,23 @@ const Header = () => {
   const userDetails = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    // Add event listener to detect clicks outside the dropdown container
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Remove event listener on component unmount
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
   
   const logout = async () => {
     try {
@@ -71,6 +88,7 @@ const Header = () => {
             </button>
             {isOpen && (
               <div
+              ref={dropdownRef}
                 onClick={() => setIsOpen(false)}
                 className="absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-xl dark:bg-gray-800"
               >
@@ -91,7 +109,7 @@ const Header = () => {
                 <Link to={'/viewprofile'}><p className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                   view profile
                 </p></Link>
-                <Link to={'/viewprofile'}><p className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                <Link to={'/userReviews'}><p className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                   your reviews
                 </p></Link>
                 <Link onClick={logout}><p className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">

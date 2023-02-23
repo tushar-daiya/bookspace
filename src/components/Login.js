@@ -31,6 +31,7 @@ const Login = () => {
           buttons: false,
           timer: 3000,
         });
+        setLoading(false);
         setTimeout(() => {
           navigate("/");
         }, 3000);
@@ -42,8 +43,8 @@ const Login = () => {
           buttons: false,
           timer: 3000,
         });
+        setLoading(false);
       });
-    setLoading(false);
   };
   return (
     <div className="flex items-center justify-center p-12">

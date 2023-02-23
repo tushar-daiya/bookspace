@@ -50,7 +50,7 @@ const Detail = () => {
             </h1>
             
             <ReactStars size={40} half={true} value={data.rating/data.userRated} edit={false} />
-            <p className="md:text-xl text-lg mt-3">{data.description}</p>
+            <p className="md:text-xl text-lg mt-3 whitespace-normal">{data.description}</p>
             <Reviews id={id} prevRating={data.rating} userRated={data.userRated}/>
           </div>
         </>
