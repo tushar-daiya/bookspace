@@ -1,21 +1,20 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection} from 'firebase/firestore'
+import { getFirestore, collection } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyDwE_aAlT0CsNe2xsE9mWszC2P4g4ycAWg",
-  authDomain: "bookspace-802f9.firebaseapp.com",
-  projectId: "bookspace-802f9",
-  storageBucket: "bookspace-802f9.appspot.com",
-  messagingSenderId: "634318152567",
-  appId: "1:634318152567:web:fa0066e6837b05da1bf772"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db= getFirestore(app);
-export const booksRef =collection(db,"books");
-export const reviewsRef=collection(db,"reviews");
-export const usersRef=collection(db,"users");
-
+export const db = getFirestore(app);
+export const booksRef = collection(db, "books");
+export const reviewsRef = collection(db, "reviews");
+export const usersRef = collection(db, "users");
 
 export default app;

@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import swal from "sweetalert";
-import { UserContext, AppContext } from "../App";
+import { UserContext } from "../App";
 
 const Reviews = ({ id, prevRating, userRated }) => {
   const [rating, setRating] = useState(0);
@@ -20,7 +20,6 @@ const Reviews = ({ id, prevRating, userRated }) => {
   const [form, setForm] = useState("");
   const [data, setData] = useState([]);
   const userDetails = useContext(UserContext);
-  console.log(userDetails);
   const sendReview = async () => {
     setLoading(true);
     try {

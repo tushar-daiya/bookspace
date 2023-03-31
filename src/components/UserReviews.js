@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { reviewsRef, booksRef, db } from "../firebase/firebase";
+import { reviewsRef, db } from "../firebase/firebase";
 import ReactStars from "react-stars";
 import { query, where, getDocs, getDoc, doc } from "firebase/firestore";
 import { UserContext } from "../App";
@@ -32,7 +32,6 @@ const UserReviews = () => {
       throw new Error("Book document not found");
     }
   }
-  console.log("lg:w-40 sm:w-32 w-20 lg:w-[900px] md:w-[700px] sm:[600px] ");
 
   return (
     <div className="container mx-auto flex flex-col items-center md:gap-2">

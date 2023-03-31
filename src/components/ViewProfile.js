@@ -12,7 +12,6 @@ const ViewProfile = () => {
     name: "",
     email: "",
   });
-  console.log(userDetails);
   useEffect(() => {
     if (userDetails.user != null) {
       setForm({
