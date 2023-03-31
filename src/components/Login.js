@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+  console.log(process.env.REACT_APP_API_KEY)
   const useAppstate = useContext(Appstate);
   const userDetails = useContext(UserContext);
   const navigate = useNavigate();
